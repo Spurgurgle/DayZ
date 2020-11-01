@@ -1,6 +1,6 @@
 class Source_CarRearLight extends CarRearLightBase
 {
-	void VeeDubRearLight()
+	void Source_CarRearLight()
 	{
 		// Brake light only
 		m_SegregatedBrakeBrightness = 1;

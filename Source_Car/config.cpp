@@ -1,3 +1,5 @@
+//Main config.cpp
+
 class CfgPatches
 {
 	class Source_Car
@@ -10,10 +12,9 @@ class CfgPatches
 		requiredVersion=0.1;
 		requiredAddons[]=
 		{
-			"DZ_Scripts",
-			"DZ_Sounds_Effects",
+			"Source_Car_Scripts",
+			"Source_Car_Sounds",
 			"DZ_Vehicles_Parts"
-			
 			//minimal required addons. All other required addons are called up inside these ones. So not needed.
 		};
 	};
@@ -22,15 +23,15 @@ class CfgMods
 {
 	class Source_Car
 	{
-		dir="Source_Car";
-		picture="Source_Car/data/Source_Car_logo.edds";
+		dir="Source_Car"; //main directory
+		picture="Source_Car/data/Source_Car_logo.edds"; //logo when seen in game on main menu??
 		action="";
 		hideName=1;
 		hidePicture=1;
 		name="Source_Car";
 		credits="Spurgle, Yoluke86"; //Add yourself if you contribute
 		author="Spurgle, Yoluke86";  //Add yourself if you contribute
-		authorID="0";
+		authorID="0";  //authors steam id???
 		version="1.0";
 		extra=0;
 		type="mod";
@@ -69,98 +70,12 @@ class CfgMods
 		};
 	};
 };
-class CfgSoundShaders
-{
-	
-};
-class CfgSoundSets
-{
-	
-};
-class CfgSlots
-{
-	class Slot_Source_CarWheel_1_1
-	{
-		name="Source_CarWheel_1_1";			//slot name
-		displayName="Front Left wheel";
-		selection="wheel_1_1";				//selection in the model and model.cfg
-		ghostIcon="wheel";					//icon in the gui, more can be found in p/scripts/config.cpp
-	};
-	class Slot_Source_CarWheel_1_2
-	{
-		name="Source_CarWheel_1_2";
-		displayName="Rear Left wheel";
-		selection="wheel_1_2";
-		ghostIcon="wheel";
-	};
-	class Slot_Source_CarWheel_2_1
-	{
-		name="Source_CarWheel_2_1";
-		displayName="Front Right wheel";
-		selection="wheel_2_1";
-		ghostIcon="wheel";
-	};
-	class Slot_Source_CarWheel_2_2
-	{
-		name="Source_CarWheel_2_2";
-		displayName="Rear Right wheel";
-		selection="wheel_2_2";
-		ghostIcon="wheel";
-	};
-	class Slot_Source_CarWheel_spare
-	{
-		name="Source_CarWheel_spare";
-		displayName="Spare wheel";
-		selection="wheel_spare";
-		ghostIcon="wheel";
-	};
-	class Slot_Source_Car_Driver_door
-	{
-		name="Source_Car_Driver_door";
-		displayName="Drivers Door";
-		selection="doors_driver";
-		ghostIcon="doorfront";
-	};
-	class Slot_Source_Car_Codriver_door
-	{
-		name="Source_Car_Codriver_door";
-		displayName="Passenger Door";
-		selection="doors_codriver";
-		ghostIcon="doorfront";
-	};
-	class Slot_Source_Car_Cargo1_door
-	{
-		name="Source_Car_Cargo1_door";
-		displayName="Rear Door";
-		selection="doors_Cargo1";
-		ghostIcon="doorrear";
-	};
-	class Slot_Source_Car_Cargo2_door
-	{
-		name="Source_Car_Cargo2_door";
-		displayName="Rear Door";
-		selection="doors_Cargo2";
-		ghostIcon="doorrear";
-	};
-	class Slot_Source_Car_Hood
-	{
-		name="Source_Car_Hood";
-		displayName="Source_Car_Hood";
-		selection="doors_hood";
-		ghostIcon="hood";
-	};
-	class Slot_Source_Car_Trunk
-	{
-		name="Source_Car_Trunk";
-		displayName="Source_Car_Trunk";
-		selection="doors_trunk";
-		ghostIcon="trunk";
-	};
-};
 class CfgVehicles
 {
 	class CarScript;
 	class Crew;
+	class Driver;
+	class CoDriver;
 	class CarDoor;
 	class Front;
 	class Rear;
@@ -183,14 +98,14 @@ class CfgVehicles
 		displayName="Source Car Wheel";
 		descriptionShort="A wheel for the source car";
 		model="\Source_Car\proxys\Source_CarWheel.p3d";
-		weight=20000; 		//Must match mass of wheel in geomety LOD wheel p3d and the mass of the wheel geometry in vehicle p3d.
+		weight=20000; 		//Must match mass of wheel in geomety LOD of wheel p3d and the mass of the wheel geometry in vehicle p3d.
 		inventorySlot[]=
 		{
 			"Source_CarWheel_1_1",
 			"Source_CarWheel_1_2",
 			"Source_CarWheel_2_1",
 			"Source_CarWheel_2_2",
-			"Source_CarWheel_Spare_1"
+			"Source_CarWheel_Spare"
 		};
 		rotationFlags=4;	//Change this to get your items to sit correctly on the floor. 
 		repairableWithKits[]={6};
@@ -267,7 +182,7 @@ class CfgVehicles
 			"Source_CarWheel_1_2",
 			"Source_CarWheel_2_1",
 			"Source_CarWheel_2_2",
-			"Source_CarWheel_Spare_1"
+			"Source_CarWheel_Spare"
 		};
 		rotationFlags=4;
 		radius=0.2;
@@ -653,61 +568,59 @@ class CfgVehicles
 		{
 			"dz\data\data\default.rvmat"
 		};
-		class DamageSystem: DamageSystem
+		class DamageSystem
 		{
-			class DamageZones: DamageZones
+			class GlobalHealth
 			{
-				class Doors: Doors
+				class Health
 				{
-					class Health: Health
+					hitpoints=500;
+					RefTexsMats[]=
 					{
-						RefTexsMats[]=
+						"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood.rvmat"
+					};
+					healthLevels[]=
+					{
+						
 						{
-							"dz\vehicles\wheeled\offroadhatchback\data\green\niva_trunk.rvmat"
-						};
-						healthLevels[]=
-						{
+							1,
 							
 							{
-								1,
-								
-								{
-									"dz\vehicles\wheeled\offroadhatchback\data\green\niva_trunk.rvmat"
-								}
-							},
-							
-							{
-								0.69999999,
-								
-								{
-									"dz\vehicles\wheeled\offroadhatchback\data\green\niva_trunk.rvmat"
-								}
-							},
-							
-							{
-								0.5,
-								
-								{
-									"dz\vehicles\wheeled\offroadhatchback\data\green\niva_trunk_damage.rvmat"
-								}
-							},
-							
-							{
-								0.30000001,
-								
-								{
-									"dz\vehicles\wheeled\offroadhatchback\data\green\niva_trunk_damage.rvmat"
-								}
-							},
-							
-							{
-								0,
-								
-								{
-									"dz\vehicles\wheeled\offroadhatchback\data\green\niva_trunk_destruct.rvmat"
-								}
+								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood.rvmat"
 							}
-						};
+						},
+						
+						{
+							0.69999999,
+							
+							{
+								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood.rvmat"
+							}
+						},
+						
+						{
+							0.5,
+							
+							{
+								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood_damage.rvmat"
+							}
+						},
+						
+						{
+							0.30000001,
+							
+							{
+								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood_damage.rvmat"
+							}
+						},
+						
+						{
+							0,
+							
+							{
+								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood_destruct.rvmat"
+							}
+						}
 					};
 				};
 			};
@@ -755,6 +668,7 @@ class CfgVehicles
 			"Source_CarWheel_1_2",
 			"Source_CarWheel_2_1",
 			"Source_CarWheel_2_2",
+			"Source_CarWheel_Spare",
 			"Source_Car_Driver_door",
 			"Source_Car_Codriver_door",
 			"Source_Car_Cargo1_door",
@@ -811,23 +725,13 @@ class CfgVehicles
 		tailReflectorMatOff="dz\data\data\default.rvmat";
 		reverseReflectorMatOn="Source_Car\data\lights.rvmat";
 		reverseReflectorMatOff="dz\data\data\default.rvmat";
-		class Crew
+		class Crew: Crew
 		{
-			class Driver
+			class Driver: Driver
 			{
-				actionSel="seat_driver";
-				proxyPos="crewDriver";
-				getInPos="pos driver";
-				getInDir="pos driver dir";
-				isDriver=1;
 			};
-			class CoDriver
+			class CoDriver: CoDriver
 			{
-				actionSel="seat_codriver";
-				proxyPos="crewCodriver";
-				getInPos="pos_codriver";
-				getInDir="pos_codriver_dir";
-				isDriver=0;
 			};
 			class Cargo1
 			{
@@ -847,13 +751,13 @@ class CfgVehicles
 		class SimulationModule: SimulationModule
 		{
 			drive="DRIVE_FWD";			//AWD,FWD,RWD All, Front, Rear Wheel Drive
-			airDragCoefficient=0.79000002;  //Air resistance??????
+			airDragCoefficient=0.79000002;  //Air resistance?????? change to airDragFrontTotal for DayZ 1.10
 			braking[]={0,0.30000001,1,0.80000001,2.5,0.89999998,3,1}; // 0,0.3000001= time,amount of brake force applied. (0.1-10%)
 			class Steering
 			{
-				increaseSpeed[]={0,50,60,30,100,15};    
-				decreaseSpeed[]={0,90,60,45,100,20};	
-				centeringSpeed[]={0,0,15,27,60,45,100,63};
+				increaseSpeed[]={0,45,60,25,100,10};
+				decreaseSpeed[]={0,80,60,40,100,15};
+				centeringSpeed[]={0,0,15,25,60,40,100,60};
 			};
 			class Throttle
 			{
@@ -866,20 +770,20 @@ class CfgVehicles
 			class Engine
 			{
 				inertia=0.23;
-				torqueMax=142;
+				torqueMax=82;
 				torqueRpm=3000;
-				powerMax=97;
-				powerRpm=3300;
+				powerMax=37;
+				powerRpm=5000;
 				rpmIdle=900;
 				rpmMin=1000;
-				rpmRedline=5000;
-				rpmMax=6000;
+				rpmRedline=5750;
+				rpmMax=7000;
 				rpmClutch=1500;
 			};
 			class Gearbox
 			{
-				reverse=3.8;
-				ratios[]={3.8,2.9,2.2,1.5};
+				reverse=3.27;
+				ratios[]={3.8,2.1199999,1.41,0.95999998};
 				timeToUncoupleClutch=0.1;
 				timeToCoupleClutch=0.30000001;
 				maxClutchTorque=165;
@@ -1690,7 +1594,8 @@ class CfgVehicles
 					"Source_CarWheel_1_1",
 					"Source_CarWheel_1_2",
 					"Source_CarWheel_2_1",
-					"Source_CarWheel_2_2"
+					"Source_CarWheel_2_2",
+					"Source_CarWheel_Spare"
 				};
 			};
 		};
@@ -1703,18 +1608,18 @@ class CfgVehicles
 			camposSmoothCoef=0.029999999;
 			soundSetsFilter[]=
 			{
-				"Spur_VeeDub_Engine_Offload_Ext_Rpm1_SoundSet",
-				"Spur_VeeDub_Engine_Offload_Ext_Rpm2_SoundSet",
-				"Spur_VeeDub_Engine_Offload_Ext_Rpm3_SoundSet",
-				"Spur_VeeDub_Engine_Offload_Ext_Rpm4_SoundSet",
-				"Spur_VeeDub_Engine_Offload_Ext_Rpm5_SoundSet",
-				"Spur_VeeDub_Engine_Ext_Rpm0_SoundSet",
-				"Spur_VeeDub_Engine_Ext_Rpm1_SoundSet",
-				"Spur_VeeDub_Engine_Ext_Rpm2_SoundSet",
-				"Spur_VeeDub_Engine_Ext_Rpm3_SoundSet",
-				"Spur_VeeDub_Engine_Ext_Rpm4_SoundSet",
-				"Spur_VeeDub_Engine_Ext_Rpm5_SoundSet",
-				"Spur_VeeDub_Engine_Ext_Broken_SoundSet",
+				"Source_Car_Engine_Offload_Ext_Rpm1_SoundSet",
+				"Source_Car_Engine_Offload_Ext_Rpm2_SoundSet",
+				"Source_Car_Engine_Offload_Ext_Rpm3_SoundSet",
+				"Source_Car_Engine_Offload_Ext_Rpm4_SoundSet",
+				"Source_Car_Engine_Offload_Ext_Rpm5_SoundSet",
+				"Source_Car_Engine_Ext_Rpm0_SoundSet",
+				"Source_Car_Engine_Ext_Rpm1_SoundSet",
+				"Source_Car_Engine_Ext_Rpm2_SoundSet",
+				"Source_Car_Engine_Ext_Rpm3_SoundSet",
+				"Source_Car_Engine_Ext_Rpm4_SoundSet",
+				"Source_Car_Engine_Ext_Rpm5_SoundSet",
+				"Source_Car_Engine_Ext_Broken_SoundSet",
 				"offroad_Tires_rock_slow_Ext_SoundSet",
 				"offroad_Tires_rock_fast_Ext_SoundSet",
 				"offroad_Tires_grass_slow_Ext_SoundSet",
@@ -1738,8 +1643,8 @@ class CfgVehicles
 				"Offroad_Wind_SoundSet"
 			};
 		};
-		hornSoundSetEXT="Spur_VeeDub_Horn_Ext_SoundSet";
-        hornSoundSetINT="Spur_VeeDub_Horn_Int_SoundSet";
+		hornSoundSetEXT="Source_Car_Horn_Ext_SoundSet"; //custom horn sounds to work with CarHorn mod and Expansion
+        hornSoundSetINT="Source_Car_Horn_Int_SoundSet";
 	};
 	
 	class Source_Car_Green: Source_Car_base
@@ -1758,6 +1663,7 @@ class CfgVehicles
 			"Source_CarWheel_1_2",
 			"Source_CarWheel_2_1",
 			"Source_CarWheel_2_2",
+			"Source_CarWheel_Spare",
 			"Source_Car_Driver_door",
 			"Source_Car_Codriver_door",
 			"Source_Car_Cargo1_door",
@@ -1795,6 +1701,7 @@ class CfgVehicles
 			"Source_CarWheel_1_2",
 			"Source_CarWheel_2_1",
 			"Source_CarWheel_2_2",
+			"Source_CarWheel_Spare",
 			"Source_Car_Driver_door",
 			"Source_Car_Codriver_door",
 			"Source_Car_Cargo1_door",
@@ -1832,6 +1739,7 @@ class CfgVehicles
 			"Source_CarWheel_1_2",
 			"Source_CarWheel_2_1",
 			"Source_CarWheel_2_2",
+			"Source_CarWheel_Spare",
 			"Source_Car_Driver_door",
 			"Source_Car_Codriver_door",
 			"Source_Car_Cargo1_door",
@@ -1867,7 +1775,7 @@ class CfgNonAIVehicles
 			"Source_CarWheel_1_2",
 			"Source_CarWheel_2_1",
 			"Source_CarWheel_2_2",
-			"Source_CarWheel_spare"
+			"Source_CarWheel_Spare"
 		};
 	};
 	class ProxySource_CarWheel_Destroyed: ProxyVehiclePart
@@ -1879,7 +1787,7 @@ class CfgNonAIVehicles
 			"Source_CarWheel_1_2",
 			"Source_CarWheel_2_1",
 			"Source_CarWheel_2_2",
-			"Source_CarWheel_spare"
+			"Source_CarWheel_Spare"
 		};
 	};
 	class ProxySource_Car_Driver_door: ProxyVehiclePart

@@ -1,6 +1,6 @@
 class Source_CarFrontLight extends CarLightBase
 {
-	void VeeDubFrontLight()
+	void Source_CarFrontLight()
 	{
 		m_SegregatedBrightness = 3;
 		m_SegregatedRadius = 55;
