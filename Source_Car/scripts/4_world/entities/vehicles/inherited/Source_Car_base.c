@@ -3,7 +3,7 @@ class Source_Car_base extends CarScript
 	
 	void Source_Car_base()
 	{
-		m_dmgContactCoef = 0.060;          //tweak this up for more damge applied to player down foe less
+		m_dmgContactCoef = 0.060;          //tweak this up for more damage applied to player, down for less
 	}	
 
     override float GetActionDistanceFuel()
@@ -32,13 +32,13 @@ class Source_Car_base extends CarScript
 		override CarRearLightBase CreateRearLight()
 	{
 		return CarRearLightBase.Cast( ScriptedLightBase.CreateLight(Source_CarRearLight) );  
-															      //^^^^^^ Name of light script.c Source_Car/scripts/4world/entities/scrtiptedlightbase/...
+															      //^^^^^^ Name of light script.c Source_Car/scripts/4world/entities/scriptedlightbase/...
 	}
 	
 	override CarLightBase CreateFrontLight()
 	{
 		return CarLightBase.Cast( ScriptedLightBase.CreateLight(Source_CarFrontLight) );  
-															  //^^^^^^ Name of light script.c Source_Car/scripts/4world/entities/scrtiptedlightbase/...
+															  //^^^^^^ Name of light script.c Source_Car/scripts/4world/entities/scriptedlightbase/...
 	}
 
 	override bool CanReleaseAttachment( EntityAI attachment )									//Can Remove attachments
@@ -48,10 +48,26 @@ class Source_Car_base extends CarScript
 		
 		string attType = attachment.GetType();
 		
-		if ( EngineIsOn() || GetCarDoorsState("Source_Car_Hood") == CarDoorState.DOORS_CLOSED )  //if hood is shut
+		switch( attType )
 		{
-			if ( attType == "CarRadiator" || attType == "CarBattery" || attType == "SparkPlug" )  //these attachments 
-				return false;																	  //cant be removed
+			case "CarBattery": //this attachment
+				if ( GetCarDoorsState("Source_Car_Hood") == CarDoorState.DOORS_CLOSED || EngineIsOn() ) //if door is shut and/or engine is on
+					return false; //cant be removed
+			break;
+			
+			case "SparkPlug":
+				if ( GetCarDoorsState("Source_Car_Hood") == CarDoorState.DOORS_CLOSED || EngineIsOn() )
+					return false;
+			break;
+			case "CarRadiator":
+				if ( GetCarDoorsState("Source_Car_Hood") == CarDoorState.DOORS_CLOSED || EngineIsOn() )
+					return false;
+			break;
+			
+			case "Source_CarWheel_Spare":
+				if ( GetCarDoorsState("Source_Car_Trunk") == CarDoorState.DOORS_CLOSED )
+					return false;
+			break;
 		}
 	
 		return true;	//otherwise yes attachments can be removed																		
@@ -376,6 +392,7 @@ class Source_Car_base extends CarScript
 		
 		if ( Class.CastTo(entity, this) )
 		{
+			entity.GetInventory().CreateInInventory( "Source_CarWheel" );
 			entity.GetInventory().CreateInInventory( "Source_CarWheel" );
 			entity.GetInventory().CreateInInventory( "Source_CarWheel" );
 			entity.GetInventory().CreateInInventory( "Source_CarWheel" );
