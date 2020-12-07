@@ -4,6 +4,15 @@ class Source_Car_base extends CarScript
 	void Source_Car_base()
 	{
 		m_dmgContactCoef = 0.060;          //tweak this up for more damage applied to player, down for less
+		
+		m_EngineStartOK = "CivilianSedan_engine_start_SoundSet";
+		m_EngineStartBattery = "CivilianSedan_engine_failed_start_battery_SoundSet";
+		m_EngineStartPlug = "CivilianSedan_engine_failed_start_sparkplugs_SoundSet";
+		m_EngineStartFuel = "CivilianSedan_engine_failed_start_fuel_SoundSet";
+		m_EngineStopFuel = "offroad_engine_stop_fuel_SoundSet";
+
+		m_CarDoorOpenSound = "offroad_door_open_SoundSet";
+		m_CarDoorCloseSound = "offroad_door_close_SoundSet";
 	}	
 
     override float GetActionDistanceFuel()
@@ -418,19 +427,19 @@ class Source_Car_base extends CarScript
 		Fill( CarFluid.COOLANT, 6.0 );
 		Fill( CarFluid.OIL, 4.0 );
 	}
-}
+};
 class Source_Car_Green extends Source_Car_base
 {
 		
-}
+};
 class Source_Car_Blue extends Source_Car_base
 {
 		
-}
+};
 class Source_Car_Red extends Source_Car_base
 {
 		
-}
+};
 
 
 

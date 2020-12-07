@@ -23,14 +23,14 @@ class CfgMods
 {
 	class Source_Car
 	{
-		dir="Source_Car"; //main directory
-		picture="Source_Car/data/Source_Car_logo.edds"; //logo when seen in game on main menu??
+		dir="Source_Car";
+		picture="";
 		action="";
 		hideName=1;
 		hidePicture=1;
 		name="Source_Car";
 		credits="Spurgle, Yoluke86"; //Add yourself if you contribute
-		author="Spurgle, Yoluke86";  //Add yourself if you contribute
+		author="Spurgle";
 		authorID="0";  //authors steam id???
 		version="1.0";
 		extra=0;
@@ -124,12 +124,12 @@ class CfgVehicles
 					hitpoints=200;
 					healthLevels[]=
 					{
-						//experiment with default rvmats later.
+						
 						{
 							1,
 							
 							{
-								"DZ\vehicles\wheeled\OffroadHatchback\data\niva_wheel.rvmat" // change these to your own rvmats. 
+								"DZ\vehicles\wheeled\OffroadHatchback\data\niva_wheel.rvmat" // change these to your own rvmats. Pristine
 							}
 						},
 						
@@ -137,7 +137,7 @@ class CfgVehicles
 							0.69999999,
 							
 							{
-								"DZ\vehicles\wheeled\OffroadHatchback\data\niva_wheel.rvmat"
+								"DZ\vehicles\wheeled\OffroadHatchback\data\niva_wheel.rvmat" //worn
 							}
 						},
 						
@@ -145,7 +145,7 @@ class CfgVehicles
 							0.5,
 							
 							{
-								"DZ\vehicles\wheeled\OffroadHatchback\data\niva_wheel_damage.rvmat"
+								"DZ\vehicles\wheeled\OffroadHatchback\data\niva_wheel_damage.rvmat" //damaged
 							}
 						},
 						
@@ -153,7 +153,7 @@ class CfgVehicles
 							0.30000001,
 							
 							{
-								"DZ\vehicles\wheeled\OffroadHatchback\data\niva_wheel_damage.rvmat"
+								"DZ\vehicles\wheeled\OffroadHatchback\data\niva_wheel_damage.rvmat" //badly damaged
 							}
 						},
 						
@@ -161,7 +161,7 @@ class CfgVehicles
 							0,
 							
 							{
-								"DZ\vehicles\wheeled\OffroadHatchback\data\niva_wheel_destruct.rvmat"
+								"DZ\vehicles\wheeled\OffroadHatchback\data\niva_wheel_destruct.rvmat" //ruined.. kinda not needed as wheel changes to destroyed wheel upon being ruined
 							}
 						}
 					};
@@ -174,7 +174,7 @@ class CfgVehicles
 		scope=2;
 		displayName="Source Car Wheel Ruined";
 		descriptionShort="A ruined wheel for the source car";
-		model="\Source_Car\proxys\Source_Car_WheelDestroyed.p3d";
+		model="\Source_Car\proxys\Source_CarWheel_Destroyed.p3d";
 		weight=20000;
 		inventorySlot[]=
 		{
@@ -208,23 +208,56 @@ class CfgVehicles
 		{
 			"dz\data\data\default.rvmat"
 		};
-		class DamageSystem: DamageSystem
+		class DamageSystem
 		{
-			class GlobalHealth: GlobalHealth
+			class GlobalHealth
 			{
-			};
-			class DamageZones: DamageZones
-			{
-				class Window: Window
+				class Health
 				{
-					class Health: Health
+					hitpoints=500;
+					healthLevels[]=
 					{
+						
+						{
+							1,
+							{}
+						},
+						
+						{
+							0.69999999,
+							{}
+						},
+						
+						{
+							0.5,
+							{}
+						},
+						
+						{
+							0.30000001,
+							{}
+						},
+						
+						{
+							0,
+							{}
+						}
+					};
+				};
+			};
+			class DamageZones
+			{
+				class Window
+				{
+					class Health
+					{
+						hitpoints=70;
+						transferToGlobalCoef=0;
 						healthLevels[]=
 						{
 							
 							{
 								1,
-								
 								{
 									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass.rvmat"
 								}
@@ -232,7 +265,9 @@ class CfgVehicles
 							
 							{
 								0.69999999,
-								{}
+								{
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass_damage.rvmat"
+								}
 							},
 							
 							{
@@ -245,7 +280,6 @@ class CfgVehicles
 							
 							{
 								0.30000001,
-								
 								{
 									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass_destruct.rvmat"
 								}
@@ -253,19 +287,29 @@ class CfgVehicles
 							
 							{
 								0,
-								"hidden"
+								{
+									"hidden"
+								}
 							}
 						};
 					};
+					componentNames[]=
+					{
+						"dmgZone_window"
+					};
+					fatalInjuryCoef=-1;
+					inventorySlots[]={};
 				};
-				class Doors: Doors
+				class Doors
 				{
-					class Health: Health
+					class Health
 					{
 						RefTexsMats[]=
 						{
-							"dz\vehicles\wheeled\offroadhatchback\data\green\niva_door.rvmat"
+							"dz\data\data\default.rvmat"
 						};
+						hitpoints=500;
+						transferToGlobalCoef=1;
 						healthLevels[]=
 						{
 							
@@ -273,7 +317,7 @@ class CfgVehicles
 								1,
 								
 								{
-									"dz\vehicles\wheeled\offroadhatchback\data\green\niva_door.rvmat"
+									"dz\data\data\default.rvmat"
 								}
 							},
 							
@@ -281,7 +325,7 @@ class CfgVehicles
 								0.69999999,
 								
 								{
-									"dz\vehicles\wheeled\offroadhatchback\data\green\niva_door.rvmat"
+									"dz\data\data\default.rvmat"
 								}
 							},
 							
@@ -289,7 +333,7 @@ class CfgVehicles
 								0.5,
 								
 								{
-									"dz\vehicles\wheeled\offroadhatchback\data\green\niva_door_damage.rvmat"
+									"Source_Car\data\defaultdamage.rvmat"
 								}
 							},
 							
@@ -297,7 +341,7 @@ class CfgVehicles
 								0.30000001,
 								
 								{
-									"dz\vehicles\wheeled\offroadhatchback\data\green\niva_door_damage.rvmat"
+									"Source_Car\data\defaultdamage.rvmat"
 								}
 							},
 							
@@ -305,11 +349,17 @@ class CfgVehicles
 								0,
 								
 								{
-									"dz\vehicles\wheeled\offroadhatchback\data\green\niva_door_destruct.rvmat"
+									"Source_Car\data\defaultdestruct.rvmat"
 								}
 							}
 						};
 					};
+					componentNames[]=
+					{
+						"dmgZone_doors"
+					};
+					fatalInjuryCoef=-1;
+					inventorySlots[]={};
 				};
 			};
 		};
@@ -463,52 +513,52 @@ class CfgVehicles
 				{
 					hitpoints=500;
 					RefTexsMats[]=
-					{
-						"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood.rvmat"
-					};
-					healthLevels[]=
-					{
-						
 						{
-							1,
+							"dz\data\data\default.rvmat"
+						};
+						healthLevels[]=
+						{
 							
 							{
-								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood.rvmat"
-							}
-						},
-						
-						{
-							0.69999999,
+								1,
+								
+								{
+									"dz\data\data\default.rvmat"
+								}
+							},
 							
 							{
-								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood.rvmat"
-							}
-						},
-						
-						{
-							0.5,
+								0.69999999,
+								
+								{
+									"dz\data\data\default.rvmat"
+								}
+							},
 							
 							{
-								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood_damage.rvmat"
-							}
-						},
-						
-						{
-							0.30000001,
+								0.5,
+								
+								{
+									"Source_Car\data\defaultdamage.rvmat"
+								}
+							},
 							
 							{
-								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood_damage.rvmat"
-							}
-						},
-						
-						{
-							0,
+								0.30000001,
+								
+								{
+									"Source_Car\data\defaultdamage.rvmat"
+								}
+							},
 							
 							{
-								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood_destruct.rvmat"
+								0,
+								
+								{
+									"Source_Car\data\defaultdestruct.rvmat"
+								}
 							}
-						}
-					};
+						};
 				};
 			};
 		};
@@ -563,7 +613,7 @@ class CfgVehicles
 		{
 			"Source_Car_Trunk"
 		};
-		rotationFlags=1;
+		rotationFlags=0;
 		hiddenSelectionsMaterials[]=
 		{
 			"dz\data\data\default.rvmat"
@@ -574,51 +624,50 @@ class CfgVehicles
 			{
 				class Health
 				{
-					hitpoints=500;
 					RefTexsMats[]=
 					{
-						"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood.rvmat"
+						"dz\data\data\default.rvmat"
 					};
 					healthLevels[]=
 					{
-						
+							
 						{
 							1,
-							
+								
 							{
-								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood.rvmat"
+								"dz\data\data\default.rvmat"
 							}
 						},
-						
+							
 						{
 							0.69999999,
-							
+								
 							{
-								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood.rvmat"
+								"dz\data\data\default.rvmat"
 							}
 						},
-						
+							
 						{
 							0.5,
-							
+								
 							{
-								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood_damage.rvmat"
+								"Source_Car\data\defaultdamage.rvmat"
 							}
 						},
-						
+							
 						{
 							0.30000001,
-							
+								
 							{
-								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood_damage.rvmat"
+								"Source_Car\data\defaultdamage.rvmat"
 							}
 						},
-						
+							
 						{
 							0,
-							
+								
 							{
-								"dz\vehicles\wheeled\offroadhatchback\data\green\niva_hood_destruct.rvmat"
+								"Source_Car\data\defaultdestruct.rvmat"
 							}
 						}
 					};
@@ -676,7 +725,7 @@ class CfgVehicles
 			"Source_Car_Hood",
 			"Source_Car_Trunk",
 		};
-		hiddenSelections[]= // from and in same order as in model.cfg (Source_car.cfg)
+		hiddenSelections[]= // from model.cfg (Source_car.cfg)
 		{
 			"light_1_1",
 			"light_2_1",
@@ -687,10 +736,24 @@ class CfgVehicles
 			"light_1_2",
 			"light_2_2",
 			"light_dashboard",
-			"camo_chassis"
+			"dmgZone_chassis",
+			"dmgZone_front",
+			"dmgZone_back",
+			"dmgZone_roof",
+			"dmgZone_fender_1_1",
+			"dmgZone_fender_1_2",
+			"dmgZone_fender_2_1",
+			"dmgZone_fender_2_2"
 		};
 		hiddenSelectionsTextures[]=   //textures for hidden selections, not needed in this base class, same order as hidden selections above.
 		{
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
 			"",
 			"",
 			"",
@@ -713,6 +776,13 @@ class CfgVehicles
 			"dz\data\data\default.rvmat",
 			"dz\data\data\default.rvmat",
 			"dz\data\data\default.rvmat",
+			"dz\data\data\default.rvmat",
+			"dz\data\data\default.rvmat",
+			"dz\data\data\default.rvmat",
+			"dz\data\data\default.rvmat",
+			"dz\data\data\default.rvmat",
+			"dz\data\data\default.rvmat",
+			"dz\data\data\default.rvmat",
 			"dz\data\data\default.rvmat"
 		};
 		dashboardMatOn="Source_Car\data\dashlights.rvmat";    //rvmat for the lights when on
@@ -725,14 +795,23 @@ class CfgVehicles
 		tailReflectorMatOff="dz\data\data\default.rvmat";
 		reverseReflectorMatOn="Source_Car\data\lights.rvmat";
 		reverseReflectorMatOff="dz\data\data\default.rvmat";
-		class Crew: Crew
+		class Crew
 		{
-			class Driver: Driver
+			class Driver
 			{
+				actionSel="seat_driver";
+				proxyPos="crewDriver";
+				getInPos="pos_driver";
+				getInDir="pos_driver_dir";
+				isDriver=1;
 			};
-			class CoDriver: CoDriver
+			class CoDriver
 			{
-			};
+				actionSel="seat_coDriver";
+				proxyPos="crewCoDriver";
+				getInPos="pos_coDriver";
+				getInDir="pos_coDriver_dir";
+			}
 			class Cargo1
 			{
 				actionSel="seat_cargo1";
@@ -750,8 +829,8 @@ class CfgVehicles
 		};
 		class SimulationModule: SimulationModule
 		{
-			drive="DRIVE_FWD";			//AWD,FWD,RWD All, Front, Rear Wheel Drive
-			airDragCoefficient=0.79000002;  //Air resistance?????? change to airDragFrontTotal for DayZ 1.10
+			drive="DRIVE_FWD";			//AWD,FWD,RWD,???
+			airDragFrontTotal=0.79000002;  //Air resistance??
 			braking[]={0,0.30000001,1,0.80000001,2.5,0.89999998,3,1}; // 0,0.3000001= time,amount of brake force applied. (0.1-10%)
 			class Steering
 			{
@@ -769,11 +848,11 @@ class CfgVehicles
 			};
 			class Engine
 			{
-				inertia=0.23;
-				torqueMax=82;
-				torqueRpm=3000;
-				powerMax=37;
-				powerRpm=5000;
+				inertia=0.15;
+				torqueMax=92;
+				torqueRpm=3300;
+				powerMax=57;
+				powerRpm=5200;
 				rpmIdle=900;
 				rpmMin=1000;
 				rpmRedline=5750;
@@ -969,44 +1048,44 @@ class CfgVehicles
 						transferToGlobalCoef=0;
 						healthLevels[]=
 						{
-							
+								
 							{
 								1,
-								
+									
 								{
-									""
+									"dz\data\data\default.rvmat"  //pristine same rvmat as on your model
 								}
 							},
-							
+								
 							{
 								0.69999999,
-								
+									
 								{
-									""
+									"Source_Car\data\defaultdamage.rvmat" //worn same rvmat as on your model
 								}
 							},
-							
+								
 							{
 								0.5,
-								
+									
 								{
-									""
+									"Source_Car\data\defaultdamage.rvmat" //damaged basic damage rvmat
 								}
 							},
-							
+								
 							{
 								0.30000001,
-								
+									
 								{
-									""
+									"Source_Car\data\2xdamage.rvmat" //badly damaged basic damage rvmat
 								}
 							},
-							
+								
 							{
 								0,
-								
+									
 								{
-									""
+									"Source_Car\data\2xdestruct.rvmat"   //ruined  basic destruct rvmat 
 								}
 							}
 						};
@@ -1020,10 +1099,10 @@ class CfgVehicles
 					transferToZonesCoefs[]={0.69999999,0.69999999,0.80000001};
 					inventorySlots[]=
 					{
-						"Hatchback_02_Hood",
+						"Source_Car_Hood",
 						"CarRadiator",
-						"Hatchback_02_Wheel_1_1",
-						"Hatchback_02_Wheel_2_1"
+						"Source_CarWheel_1_1",
+						"Source_CarWheel_2_1"
 					};
 					inventorySlotsCoefs[]={0.69999999,0.5,0.80000001,0.80000001};
 				};
@@ -1040,7 +1119,7 @@ class CfgVehicles
 					};
 					class Health
 					{
-						hitpoints=20;
+						hitpoints=100;
 						transferToGlobalCoef=0;
 						healthLevels[]=
 						{
@@ -1049,34 +1128,36 @@ class CfgVehicles
 								1,
 								
 								{
-									"dz\vehicles\wheeled\hatchback_02\data\hatchback_02_windows.rvmat"
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass.rvmat"
 								}
 							},
 							
 							{
 								0.69999999,
-								{}
+								{
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass.rvmat"
+								}
 							},
 							
 							{
 								0.5,
 								
 								{
-									"dz\vehicles\wheeled\hatchback_02\data\glass_i_damage.rvmat"
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass_damage.rvmat"
 								}
 							},
 							
 							{
 								0.30000001,
-								{}
+								
+								{
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass_destruct.rvmat"
+								}
 							},
 							
 							{
 								0,
-								
-								{
-									"dz\vehicles\wheeled\hatchback_02\data\glass_i_destruct.rvmat"
-								}
+								"dz\vehicles\wheeled\offroadhatchback\data\niva_glass_destruct.rvmat"
 							}
 						};
 					};
@@ -1088,10 +1169,9 @@ class CfgVehicles
 					transferToZonesCoefs[]={1,1};
 					inventorySlots[]=
 					{
-						"Reflector_1_1",
-						"Hatchback_02_Wheel_1_1"
+						"Reflector_1_1"
 					};
-					inventorySlotsCoefs[]={1,0.89999998};
+					inventorySlotsCoefs[]={1};
 				};
 				class Reflector_2_1: Reflector_1_1
 				{
@@ -1110,8 +1190,7 @@ class CfgVehicles
 					};
 					inventorySlots[]=
 					{
-						"Reflector_2_1",
-						"Hatchback_02_Wheel_2_1"
+						"Reflector_2_1"
 					};
 				};
 				class Back
@@ -1132,44 +1211,44 @@ class CfgVehicles
 						transferToGlobalCoef=0;
 						healthLevels[]=
 						{
-							
+								
 							{
 								1,
-								
+									
 								{
-									""
+									"dz\data\data\default.rvmat"
 								}
 							},
-							
+								
 							{
 								0.69999999,
-								
+									
 								{
-									""
+									"Source_Car\data\defaultdamage.rvmat"
 								}
 							},
-							
+								
 							{
 								0.5,
-								
+									
 								{
-									""
+									"Source_Car\data\defaultdamage.rvmat"
 								}
 							},
-							
+								
 							{
 								0.30000001,
-								
+									
 								{
-									""
+									"Source_Car\data\2xdamage.rvmat"
 								}
 							},
-							
+								
 							{
 								0,
-								
+									
 								{
-									""
+									"Source_Car\data\2xdestruct.rvmat"
 								}
 							}
 						};
@@ -1182,9 +1261,9 @@ class CfgVehicles
 					transferToZonesCoefs[]={0.69999999,0.69999999};
 					inventorySlots[]=
 					{
-						"Hatchback_02_Trunk",
-						"Hatchback_02_Wheel_1_2",
-						"Hatchback_02_Wheel_2_2"
+						"Source_Car_Trunk",
+						"Source_CarWheel_1_2",
+						"Source_CarWheel_2_2"
 					};
 					inventorySlotsCoefs[]={0.89999998,0.89999998,0.89999998};
 				};
@@ -1205,44 +1284,44 @@ class CfgVehicles
 						transferToGlobalCoef=0;
 						healthLevels[]=
 						{
-							
+								
 							{
 								1,
-								
+									
 								{
-									""
+									"dz\data\data\default.rvmat"
 								}
 							},
-							
+								
 							{
 								0.69999999,
-								
+									
 								{
-									""
+									"Source_Car\data\defaultdamage.rvmat"
 								}
 							},
-							
+								
 							{
 								0.5,
-								
+									
 								{
-									""
+									"Source_Car\data\defaultdamage.rvmat"
 								}
 							},
-							
+								
 							{
 								0.30000001,
-								
+									
 								{
-									""
+									"Source_Car\data\2xdamage.rvmat"
 								}
 							},
-							
+								
 							{
 								0,
-								
+									
 								{
-									""
+									"Source_Car\data\2xdestruct.rvmat"
 								}
 							}
 						};
@@ -1266,44 +1345,44 @@ class CfgVehicles
 						transferToGlobalCoef=0;
 						healthLevels[]=
 						{
-							
+								
 							{
 								1,
-								
+									
 								{
-									""
+									"dz\data\data\default.rvmat"
 								}
 							},
-							
+								
 							{
 								0.69999999,
-								
+									
 								{
-									""
+									"Source_Car\data\defaultdamage.rvmat"
 								}
 							},
-							
+								
 							{
 								0.5,
-								
+									
 								{
-									""
+									"Source_Car\data\defaultdamage.rvmat"
 								}
 							},
-							
+								
 							{
 								0.30000001,
-								
+									
 								{
-									""
+									"Source_Car\data\2xdamage.rvmat"
 								}
 							},
-							
+								
 							{
 								0,
-								
+									
 								{
-									""
+									"Source_Car\data\2xdestruct.rvmat"
 								}
 							}
 						};
@@ -1317,9 +1396,9 @@ class CfgVehicles
 					transferToZonesCoefs[]={0.30000001,0.60000002,0.40000001};
 					inventorySlots[]=
 					{
-						"Hatchback_02_Hood",
-						"Hatchback_02_Wheel_1_1",
-						"Hatchback_02_Door_1_1"
+						"Source_Car_Hood",
+						"Source_CarWheel_1_1",
+						"Source_Car_Driver_door"
 					};
 					inventorySlotsCoefs[]={0.60000002,0.89999998,0.30000001};
 				};
@@ -1342,9 +1421,9 @@ class CfgVehicles
 					transferToZonesCoefs[]={0.30000001,0.60000002,0.40000001};
 					inventorySlots[]=
 					{
-						"Hatchback_02_Hood",
-						"Hatchback_02_Wheel_2_1",
-						"Hatchback_02_Door_2_1"
+						"Source_Car_Hood",
+						"Source_CarWheel_2_1",
+						"Source_Car_Codriver_door"
 					};
 					inventorySlotsCoefs[]={0.60000002,0.89999998,0.30000001};
 				};
@@ -1366,9 +1445,9 @@ class CfgVehicles
 					transferToZonesCoefs[]={0.69999999,0.69999999};
 					inventorySlots[]=
 					{
-						"Hatchback_02_Trunk",
-						"Hatchback_02_Wheel_1_2",
-						"Hatchback_02_Door_1_2"
+						"Source_Car_Trunk",
+						"Source_CarWheel_1_2",
+						"Source_Car_Cargo1_door"
 					};
 					inventorySlotsCoefs[]={0.69999999,0.89999998,0.30000001};
 				};
@@ -1390,9 +1469,9 @@ class CfgVehicles
 					transferToZonesCoefs[]={0.69999999,0.69999999};
 					inventorySlots[]=
 					{
-						"Hatchback_02_Trunk",
-						"Hatchback_02_Wheel_2_2",
-						"Hatchback_02_Door_2_2"
+						"Source_Car_Trunk",
+						"Source_CarWheel_2_2",
+						"Source_Car_Cargo2_door"
 					};
 					inventorySlotsCoefs[]={0.69999999,0.89999998,0.30000001};
 				};
@@ -1418,8 +1497,7 @@ class CfgVehicles
 								1,
 								
 								{
-									"dz\vehicles\wheeled\hatchback_02\data\Hatchback_02_Windows.rvmat",
-									"dz\vehicles\wheeled\hatchback_02\data\glass_i.rvmat"
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass.rvmat"
 								}
 							},
 							
@@ -1427,8 +1505,7 @@ class CfgVehicles
 								0.69999999,
 								
 								{
-									"dz\vehicles\wheeled\hatchback_02\data\Hatchback_02_Windows.rvmat",
-									"dz\vehicles\wheeled\hatchback_02\data\glass_i_damage.rvmat"
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass_damage.rvmat"
 								}
 							},
 							
@@ -1436,8 +1513,7 @@ class CfgVehicles
 								0.5,
 								
 								{
-									"hidden",
-									"dz\vehicles\wheeled\hatchback_02\data\glass_i_damage.rvmat"
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass_damage.rvmat"
 								}
 							},
 							
@@ -1445,14 +1521,71 @@ class CfgVehicles
 								0.30000001,
 								
 								{
-									"hidden",
-									"dz\vehicles\wheeled\hatchback_02\data\glass_i_destruct.rvmat"
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass_destruct.rvmat"
 								}
 							},
 							
 							{
 								0,
-								"hidden",
+								"hidden"
+							}
+						};
+					};
+					inventorySlots[]={};
+					inventorySlotsCoefs[]={};
+				};
+				class WindowBack
+				{
+					fatalInjuryCoef=-1;
+					memoryPoints[]=
+					{
+						"dmgZone_windowBack"
+					};
+					componentNames[]=
+					{
+						"dmgZone_windowBack"
+					};
+					class Health
+					{
+						hitpoints=100;
+						transferToGlobalCoef=0;
+						healthLevels[]=
+						{
+							
+							{
+								1,
+								
+								{
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass.rvmat"
+								}
+							},
+							
+							{
+								0.69999999,
+								
+								{
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass_damage.rvmat"
+								}
+							},
+							
+							{
+								0.5,
+								
+								{
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass_damage.rvmat"
+								}
+							},
+							
+							{
+								0.30000001,
+								
+								{
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass_destruct.rvmat"
+								}
+							},
+							
+							{
+								0,
 								"hidden"
 							}
 						};
@@ -1475,6 +1608,49 @@ class CfgVehicles
 					{
 						hitpoints=1000;
 						transferToGlobalCoef=1;
+						healthLevels[]=
+						{
+							
+							{
+								1,
+								
+								{
+									""
+								}
+							},
+							
+							{
+								0.69999999,
+								
+								{
+									""
+								}
+							},
+							
+							{
+								0.5,
+								
+								{
+									""
+								}
+							},
+							
+							{
+								0.30000001,
+								
+								{
+									""
+								}
+							},
+							
+							{
+								0,
+								
+								{
+									""
+								}
+							}
+						};
 					};
 					inventorySlots[]=
 					{
@@ -1682,6 +1858,13 @@ class CfgVehicles
 			"",
 			"",
 			"",
+			"Source_Car\data\chasis_green.paa",
+			"Source_Car\data\chasis_green.paa",
+			"Source_Car\data\chasis_green.paa",
+			"Source_Car\data\chasis_green.paa",
+			"Source_Car\data\chasis_green.paa",
+			"Source_Car\data\chasis_green.paa",
+			"Source_Car\data\chasis_green.paa",
 			"Source_Car\data\chasis_green.paa"
 		};
 	};
@@ -1720,6 +1903,13 @@ class CfgVehicles
 			"",
 			"",
 			"",
+			"Source_Car\data\chasis_red.paa",
+			"Source_Car\data\chasis_red.paa",
+			"Source_Car\data\chasis_red.paa",
+			"Source_Car\data\chasis_red.paa",
+			"Source_Car\data\chasis_red.paa",
+			"Source_Car\data\chasis_red.paa",
+			"Source_Car\data\chasis_red.paa",
 			"Source_Car\data\chasis_red.paa"
 		};
 	};
@@ -1758,6 +1948,13 @@ class CfgVehicles
 			"",
 			"",
 			"",
+			"Source_Car\data\chasis_blue.paa",
+			"Source_Car\data\chasis_blue.paa",
+			"Source_Car\data\chasis_blue.paa",
+			"Source_Car\data\chasis_blue.paa",
+			"Source_Car\data\chasis_blue.paa",
+			"Source_Car\data\chasis_blue.paa",
+			"Source_Car\data\chasis_blue.paa",
 			"Source_Car\data\chasis_blue.paa"
 		};
 	};
