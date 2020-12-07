@@ -1135,7 +1135,7 @@ class CfgVehicles
 							{
 								0.69999999,
 								{
-									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass.rvmat"
+									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass_damage.rvmat"
 								}
 							},
 							
@@ -1157,7 +1157,7 @@ class CfgVehicles
 							
 							{
 								0,
-								"dz\vehicles\wheeled\offroadhatchback\data\niva_glass_destruct.rvmat"
+								"hidden"
 							}
 						};
 					};
