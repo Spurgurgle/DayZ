@@ -126,7 +126,7 @@ class CfgVehicles
 					{
 						
 						{
-							1,
+							1.0,
 							
 							{
 								"DZ\vehicles\wheeled\OffroadHatchback\data\niva_wheel.rvmat" // change these to your own rvmats. Pristine
@@ -158,7 +158,7 @@ class CfgVehicles
 						},
 						
 						{
-							0,
+							0.0,
 							
 							{
 								"DZ\vehicles\wheeled\OffroadHatchback\data\niva_wheel_destruct.rvmat" //ruined.. kinda not needed as wheel changes to destroyed wheel upon being ruined
@@ -219,7 +219,7 @@ class CfgVehicles
 					{
 						
 						{
-							1,
+							1.0,
 							{}
 						},
 						
@@ -239,7 +239,7 @@ class CfgVehicles
 						},
 						
 						{
-							0,
+							0.0,
 							{}
 						}
 					};
@@ -257,7 +257,7 @@ class CfgVehicles
 						{
 							
 							{
-								1,
+								1.0,
 								{
 									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass.rvmat"
 								}
@@ -286,10 +286,8 @@ class CfgVehicles
 							},
 							
 							{
-								0,
-								{
-									"hidden"
-								}
+								0.0,
+								"hidden"
 							}
 						};
 					};
@@ -314,7 +312,7 @@ class CfgVehicles
 						{
 							
 							{
-								1,
+								1.0,
 								
 								{
 									"dz\data\data\default.rvmat"
@@ -346,7 +344,7 @@ class CfgVehicles
 							},
 							
 							{
-								0,
+								0.0,
 								
 								{
 									"Source_Car\data\defaultdestruct.rvmat"
@@ -520,7 +518,7 @@ class CfgVehicles
 						{
 							
 							{
-								1,
+								1.0,
 								
 								{
 									"dz\data\data\default.rvmat"
@@ -552,7 +550,7 @@ class CfgVehicles
 							},
 							
 							{
-								0,
+								0.0,
 								
 								{
 									"Source_Car\data\defaultdestruct.rvmat"
@@ -632,7 +630,7 @@ class CfgVehicles
 					{
 							
 						{
-							1,
+							1.0,
 								
 							{
 								"dz\data\data\default.rvmat"
@@ -664,7 +662,7 @@ class CfgVehicles
 						},
 							
 						{
-							0,
+							0.0,
 								
 							{
 								"Source_Car\data\defaultdestruct.rvmat"
@@ -988,7 +986,7 @@ class CfgVehicles
 					{
 						
 						{
-							1,
+							1.0,
 							{}
 						},
 						
@@ -1008,7 +1006,7 @@ class CfgVehicles
 						},
 						
 						{
-							0,
+							0.0,
 							{}
 						}
 					};
@@ -1040,7 +1038,7 @@ class CfgVehicles
 					componentNames[]=
 					{
 						"dmgZone_front",
-						"dmgZone_bumper_1"
+						"dmgZone_front_bumper"
 					};
 					class Health
 					{
@@ -1050,7 +1048,7 @@ class CfgVehicles
 						{
 								
 							{
-								1,
+								1.0,
 									
 								{
 									"dz\data\data\default.rvmat"  //pristine same rvmat as on your model
@@ -1082,7 +1080,7 @@ class CfgVehicles
 							},
 								
 							{
-								0,
+								0.0,
 									
 								{
 									"Source_Car\data\2xdestruct.rvmat"   //ruined  basic destruct rvmat 
@@ -1119,13 +1117,13 @@ class CfgVehicles
 					};
 					class Health
 					{
-						hitpoints=100;
+						hitpoints=10;
 						transferToGlobalCoef=0;
 						healthLevels[]=
 						{
 							
 							{
-								1,
+								1.0,
 								
 								{
 									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass.rvmat"
@@ -1156,8 +1154,9 @@ class CfgVehicles
 							},
 							
 							{
-								0,
-								"hidden"
+								0.0,
+								"hidden" 
+	
 							}
 						};
 					};
@@ -1203,7 +1202,7 @@ class CfgVehicles
 					componentNames[]=
 					{
 						"dmgZone_back",
-						"dmgZone_bumper_2"
+						"dmgZone_rear_bumper"
 					};
 					class Health
 					{
@@ -1213,7 +1212,7 @@ class CfgVehicles
 						{
 								
 							{
-								1,
+								1.0,
 									
 								{
 									"dz\data\data\default.rvmat"
@@ -1245,7 +1244,7 @@ class CfgVehicles
 							},
 								
 							{
-								0,
+								0.0,
 									
 								{
 									"Source_Car\data\2xdestruct.rvmat"
@@ -1286,7 +1285,7 @@ class CfgVehicles
 						{
 								
 							{
-								1,
+								1.0,
 									
 								{
 									"dz\data\data\default.rvmat"
@@ -1318,7 +1317,7 @@ class CfgVehicles
 							},
 								
 							{
-								0,
+								0.0,
 									
 								{
 									"Source_Car\data\2xdestruct.rvmat"
@@ -1347,7 +1346,7 @@ class CfgVehicles
 						{
 								
 							{
-								1,
+								1.0,
 									
 								{
 									"dz\data\data\default.rvmat"
@@ -1379,7 +1378,7 @@ class CfgVehicles
 							},
 								
 							{
-								0,
+								0.0,
 									
 								{
 									"Source_Car\data\2xdestruct.rvmat"
@@ -1494,7 +1493,7 @@ class CfgVehicles
 						{
 							
 							{
-								1,
+								1.0,
 								
 								{
 									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass.rvmat"
@@ -1526,7 +1525,7 @@ class CfgVehicles
 							},
 							
 							{
-								0,
+								0.0,
 								"hidden"
 							}
 						};
@@ -1553,7 +1552,7 @@ class CfgVehicles
 						{
 							
 							{
-								1,
+								1.0,
 								
 								{
 									"dz\vehicles\wheeled\offroadhatchback\data\niva_glass.rvmat"
@@ -1585,7 +1584,7 @@ class CfgVehicles
 							},
 							
 							{
-								0,
+								0.0,
 								"hidden"
 							}
 						};
@@ -1612,7 +1611,7 @@ class CfgVehicles
 						{
 							
 							{
-								1,
+								1.0,
 								
 								{
 									""
@@ -1644,7 +1643,7 @@ class CfgVehicles
 							},
 							
 							{
-								0,
+								0.0,
 								
 								{
 									""
@@ -1675,7 +1674,7 @@ class CfgVehicles
 						{
 							
 							{
-								1,
+								1.0,
 								{}
 							},
 							
@@ -1695,7 +1694,7 @@ class CfgVehicles
 							},
 							
 							{
-								0,
+								0.0,
 								{}
 							}
 						};
