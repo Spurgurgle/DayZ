@@ -5,3 +5,11 @@ I believe people can start a 2nd branch and I can merge the 2 branches (im new t
 If you do contribute please add your name into the main Config.cpp under credits. 
 
 My aim with these files is to try and make a solid set of sample files for Dayz cars/vehicles. Everything in these files are subject to change and improvement.
+
+
+Things to note.!!!
+
+When you extract your game files there is no Driver or passenger proxy. These are simply empty p3d's.
+Please make them before trying to pack you mod.
+\dz\vehicles\proxies\bus_driver.p3d
+\dz\vehicles\proxies\bus_cargo.p3d
