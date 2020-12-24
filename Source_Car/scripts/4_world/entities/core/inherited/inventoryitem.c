@@ -30,10 +30,10 @@ class Source_CarWheel extends CarWheel {
 };
 
 class Source_CarWheel_Destroyed extends CarWheel {};
-class Source_Car_Driver_door extends CarDoor {};
-class Source_Car_Codriver_door extends CarDoor {};
-class Source_Car_Cargo1_door extends CarDoor {};
-class Source_Car_Cargo2_door extends CarDoor {};
-class Source_Car_Hood extends CarDoor {};
-class Source_Car_Trunk extends CarDoor {};
+class SourceCar_DriverDoor extends CarDoor {};
+class SourceCar_CodriverDoor extends CarDoor {};
+class SourceCar_Cargo1 extends CarDoor {};
+class SourceCar_Cargo2 extends CarDoor {};
+class SourceCar_Hood extends CarDoor {};
+class SourceCar_Trunk extends CarDoor {};
 
