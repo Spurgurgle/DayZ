@@ -73,24 +73,7 @@ class CfgMods
 class CfgVehicles
 {
 	class CarScript;
-	class Crew;
-	class Driver;
-	class CoDriver;
 	class CarDoor;
-	class Front;
-	class Rear;
-	class Left;
-	class Right;
-	class AnimationSources;
-	class SimulationModule;
-	class Axles;
-	class Wheels;
-	class DamageSystem;
-	class GlobalHealth;
-	class DamageZones;
-	class Window;
-	class Health;
-	class Doors;
 	class CarWheel;
 	class Source_CarWheel: CarWheel
 	{
@@ -825,7 +808,7 @@ class CfgVehicles
 				getInDir="pos_cargo2_dir";
 			};
 		};
-		class SimulationModule: SimulationModule
+		class SimulationModule
 		{
 			drive="DRIVE_FWD";			//AWD,FWD,RWD,???
 			airDragFrontTotal=0.79000002;  //Air resistance??
@@ -865,9 +848,9 @@ class CfgVehicles
 				timeToCoupleClutch=0.30000001;
 				maxClutchTorque=165;
 			};
-			class Axles: Axles
+			class Axles
 			{
-				class Front: Front
+				class Front
 				{
 					maxSteeringAngle=30;
 					finalRatio=3.6670001;
@@ -884,21 +867,27 @@ class CfgVehicles
 						travelMaxUp=0.158200003;  // how far up the wheel can move???
 						travelMaxDown=0.083300002;// how far down ^^^???
 					};
-					class Wheels: Wheels
+					class Wheels
 					{
-						class Left: Left
+						class Left
 						{
-							animDamper="damper_1_1";
 							inventorySlot="Source_CarWheel_1_1";
+							animTurn="turnfrontleft";
+							animRotation="wheelfrontleft";
+							animDamper="damper_1_1";
+							wheelHub="wheel_1_1_damper_land";						
 						};
-						class Right: Right
+						class Right
 						{
-							animDamper="damper_2_1";
 							inventorySlot="Source_CarWheel_2_1";
+							animTurn="turnfrontright";
+							animRotation="wheelfrontright";
+							animDamper="damper_2_1";
+							wheelHub="wheel_2_1_damper_land";	
 						};
 					};
 				};
-				class Rear: Rear
+				class Rear
 				{
 					maxSteeringAngle=0;
 					brakeBias=0.44999999;
@@ -914,17 +903,23 @@ class CfgVehicles
 						travelMaxUp=0.18200003;
 						travelMaxDown=0.073300002;
 					};
-					class Wheels: Wheels
+					class Wheels
 					{
-						class Left: Left
+						class Left
 						{
-							animDamper="damper_1_2";
 							inventorySlot="Source_CarWheel_1_2";
+							animTurn="turnbackleft";
+							animRotation="wheelbackleft";
+							animDamper="damper_1_2";
+							wheelHub="wheel_1_2_damper_land";
 						};
-						class Right: Right
+						class Right
 						{
-							animDamper="damper_2_2";
 							inventorySlot="Source_CarWheel_2_2";
+							animTurn="turnbackright";
+							animRotation="wheelbackright";
+							animDamper="damper_2_2";
+							wheelHub="wheel_2_2_damper_land";							
 						};
 					};
 				};
@@ -936,7 +931,7 @@ class CfgVehicles
 			allowOwnedCargoManipulation=1;
 			openable=0;
 		};
-		class AnimationSources: AnimationSources
+		class AnimationSources
 		{
 			class DoorsDriver
 			{
@@ -973,6 +968,70 @@ class CfgVehicles
 			};
 			class damper_2_2: damper_1_2
 			{
+			};
+			class HideDestroyed_1_1
+			{
+				source="user";
+				initPhase=0;
+				animPeriod=0.001;
+			};
+			class HideDestroyed_1_2
+			{
+				source="user";
+				initPhase=0;
+				animPeriod=0.001;
+			};
+			class HideDestroyed_2_1
+			{
+				source="user";
+				initPhase=0;
+				animPeriod=0.001;
+			};
+			class HideDestroyed_2_2
+			{
+				source="user";
+				initPhase=0;
+				animPeriod=0.001;
+			};
+			
+			//not 100% sure if these sources are needed but they're in class CarScript: Car sooo
+			class AnimHitWheel_1_1
+			{
+				source="Hit";
+				hitpoint="HitWheel_1_1";
+				raw=1;
+			};
+			class AnimHitWheel_1_2: AnimHitWheel_1_1
+			{
+				hitpoint="HitWheel_1_2";
+			};
+			class AnimHitWheel_2_1: AnimHitWheel_1_1
+			{
+				hitpoint="HitWheel_2_1";
+			};
+			class AnimHitWheel_2_2: AnimHitWheel_1_1
+			{
+				hitpoint="HitWheel_2_2";
+			};
+			class HitDoorsHood: AnimHitWheel_1_1
+			{
+				hitpoint="HitDoorsHood";
+			};
+			class HitDoorsTrunk: AnimHitWheel_1_1
+			{
+				hitpoint="HitDoorsTrunk";
+			};
+			class HitDoorsDrivers: AnimHitWheel_1_1
+			{
+				hitpoint="HitDoorsDriver";
+			};
+			class HitDoorsCoDrivers: AnimHitWheel_1_1
+			{
+				hitpoint="HitDoorsCoDriver";
+			};
+			class HitDoorsCargo: AnimHitWheel_1_1
+			{
+				hitpoint="HitDoorsCargo";
 			};
 		};
 		class DamageSystem
