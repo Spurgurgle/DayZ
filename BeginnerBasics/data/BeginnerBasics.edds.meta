@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{6CC355AC8E5821BA}BeginnerBasics/data/BeginnerBasics.edds"
+ Author "spurgs-pc"
+ ChangeDate 1170041474
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "BeginnerBasics.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}
