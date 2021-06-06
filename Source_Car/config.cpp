@@ -827,6 +827,8 @@ class CfgVehicles
 				turboCoef=2.8;
 				gentleCoef=0.5;
 			};
+			// Visit https://www.desmos.com/calculator/n6dbrcsset for visualizing and adjusting the engine to your needs
+			// Don't factor in power loss, that is automatically calculated from the weight, drag, tires and many other factors
 			class Engine
 			{
 				inertia=0.15;
