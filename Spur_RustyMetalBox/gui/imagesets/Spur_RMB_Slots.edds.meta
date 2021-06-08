@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{768A44D8583005DC}Spur_RustyMetalBox/gui/imagesets/Spur_RMB_Slots.edds"
+ Author "spurgs-pc"
+ ChangeDate 1529047752
+ Configurations {
+  TGAResourceClass PC {
+   SourceFile "Spur_RMB_Slots.tga"
+  }
+  TGAResourceClass XBOX_ONE : PC {
+  }
+  TGAResourceClass PS4 : PC {
+  }
+  TGAResourceClass LINUX : PC {
+  }
+ }
+}
