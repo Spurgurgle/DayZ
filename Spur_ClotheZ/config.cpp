@@ -62,7 +62,7 @@ class cfgVehicles
 			"Body"
 		};
 		rotationFlags=64;
-		weight=2800;
+		weight=2000;
 		itemSize[]={4,4};
 		itemsCargoSize[]={6,5};
 		quickBarBonus=1;
